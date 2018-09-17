@@ -33,4 +33,5 @@ def main():
 
     print("\nThe average of", str(score1) + "%", str(score2) + "% and", str(score3) + "% is", str(average) + "%.")
 
+
 main()

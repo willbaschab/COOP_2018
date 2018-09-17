@@ -42,4 +42,5 @@ def main():
     print("\nAn initial investment of $" + str(initial), "over", years, "years with an annual interest rate of", apr,
           "will return $" + str(principal) + ".")
 
+
 main()
