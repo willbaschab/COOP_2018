@@ -38,7 +38,7 @@ def main():
     periods = eval(input("\nEnter number of periods per year the value will be compounded: "))
 
     for i in range(years * periods):
-        principal = principal * (1 + apr)
+        principal = principal * (1 + (apr/periods))
 
     print("\nAn initial investment of $" + str(initial), "over 10 years with an annual interest rate of",
           str(int(apr*100))+ "%",  "compounded", periods, "times a year will return $" + str(principal) + ".")
