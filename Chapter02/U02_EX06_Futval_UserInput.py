@@ -33,7 +33,7 @@ def main():
 
     principal = eval(input("Enter initial principal amount: "))
     initial = principal
-    apr = eval(input("\nEnter the annual interest rate: "))
+    apr = eval(input("\nEnter the annual interest rate as a decimal: "))
     years = eval(input("\nEnter the amount of years investing: "))
 
     for i in range(years):
