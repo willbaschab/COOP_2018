@@ -19,10 +19,9 @@
 # Algorithm (pseudocode)
 # 1. Print introduction
 # 2. Assign <principal>, <initial> to user input
-# 3. Assign <rate> to user input
-#
-# 4. Assign <years> to user input
-# 5. begin 'for' loop from 0 to <years>
+# 3. Assign <apr>, <periods> to user input
+# 4. Assign <years> to 10
+# 5. begin 'for' loop with <years> * <periods>
 #   6. Assign <principal> to <principal> times (1 + apr)
 # 7. Print out <principal>
 
@@ -34,14 +33,15 @@ def main():
 
     principal = eval(input("Enter initial principal amount: "))
     initial = principal
-    rate = eval(input("\nEnter the yearly rate: "))
-    periods = eval(input("\nEnter number of times interest is compounded each year: "))
+    apr = eval(input("\nEnter the annual interest rate as a decimal: "))
+    years = 10
+    periods = eval(input("\nEnter number of periods per year the value will be compounded: "))
 
-    for i in range(10 * periods - 1):
-        principal = principal + (principal * (rate/periods))
+    for i in range(years * periods):
+        principal = principal * (1 + apr)
 
-    print("\nAn initial investment of $" + str(initial), "over 10 years with an annual interest rate of", rate,
-          "compounded", periods, "times a year will return $" + str(principal) + ".")
+    print("\nAn initial investment of $" + str(initial), "over 10 years with an annual interest rate of",
+          str(int(apr*100))+ "%",  "compounded", periods, "times a year will return $" + str(principal) + ".")
 
 
 main()
