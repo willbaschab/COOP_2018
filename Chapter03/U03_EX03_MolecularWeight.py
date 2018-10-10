@@ -28,15 +28,17 @@ def main():
     print("\nThis program calculates the molecular weight of a carbohydrate with the amount of\n" +
           "Hydrogen, Carbon, and Oxygen atoms in the molecule inputted.")
 
-    hamount = int(input("\nEnter the number of Hydrogen atoms: "))
-    camount = int(input("\nEnter the number of Carbon atoms: "))
-    oamount = int(input("\nEnter the number of Oxygen atoms: "))
+    hAmount = int(input("\nEnter the number of Hydrogen atoms: "))
+    cAmount = int(input("\nEnter the number of Carbon atoms: "))
+    oAmount = int(input("\nEnter the number of Oxygen atoms: "))
 
-    hmass, cmass, omass = hamount * 1.00794, camount * 12.0107, oamount * 15.9994
+    hMass = hAmount * 1.00794
+    cMass = cAmount * 12.0107
+    oMass = oAmount * 15.9994
 
-    totalmass = hmass + cmass + omass
+    totalmass = hMass + cMass + oMass
 
-    print("\nThe total mass of a carbohydrate with", hamount, "Hydrogen atoms,", camount, "Carbon atoms, and", oamount,
+    print("\nThe total mass of a carbohydrate with", hAmount, "Hydrogen atoms,", cAmount, "Carbon atoms, and", oAmount,
           "Oxygen atoms is", totalmass, "grams per mole.")
 
 
