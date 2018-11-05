@@ -23,16 +23,13 @@
 
 
 def main():
-    #Introduction
+
     print("\nHaving trouble converting Celsius to Fahrenheit on your own?\nNo Worry!",
           "Just enter a Celsius temperature below to see it in Fahrenheit!\n")
 
-    #Input and calculation
     celsius = eval(input("Enter Celsius temperature: "))
     fahrenheit = 9/5 * celsius + 32;
 
-    #Output
-    #print("{:>5.2} degrees Celsius is equal to {:>5.2} degrees Fahrenheit.".format(celsius,fahrenheit))
     print(celsius, "degrees Celsius is equal to", fahrenheit, "degrees Fahrenheit.")
 
 

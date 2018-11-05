@@ -13,8 +13,8 @@
 #
 # Program Description
 #  This program determines the length of a ladder leaning against a wall given the
-# height of the ladder, and the angle of the ladder (between 1 and 90).
-#
+# height of the ladder, and the angle of the ladder (between 1 and 90). The length is calculated
+# based on teh height divided by the sin of the angle of the ladder and the ground.
 #
 # Algorithm (pseudocode)
 # 1. import math
@@ -29,7 +29,9 @@ import math
 
 def main():
     print("\nThis program determines the length of a ladder leaning against a wall given the",
-          "\nheight of the ladder, and the angle of the ladder (between 1 and 90).")
+          "\nheight of the ladder, and the angle of the ladder (between 1 and 90).",
+          "\nThe length is calculated based on teh height",
+          "\ndivided by the sin of the angle of the ladder and the ground.")
 
     height = float(input("\nWhat is the height of the ladder against the wall: "))
     degrees = float(input("\nWhat is the angle between the ladder and the ground: "))

@@ -25,7 +25,7 @@
 # - wait for mouse signal and remove box when received
 # - create a list <colors> with colors white, black, blue, red, and yellow
 # - <thickness> set to 25
-# - <radius> set to 6 times <thickness>
+# - <radius> set to colors length plus one times <thickness>
 # - begin for loop in range of length of <colors>
 #   - <radius> = radius - thickness
 #   - <c> = Circle at center point with radius <radius>
@@ -55,7 +55,7 @@ def main():
 
     colors = ["white", "black", "blue", "red", "yellow"]
     thickness = 50
-    radius = 6 * thickness
+    radius = (len(colors) + 1) * thickness
 
     for i in range(len(colors)):
         radius = radius - thickness
@@ -72,3 +72,4 @@ def main():
 
 
 main()
+
