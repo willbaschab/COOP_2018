@@ -20,7 +20,7 @@
 # 1. import math
 # 2. print introduction
 # 3. get user input for height and angle
-# 4. convert angle to radians
+# 4. convert angle to radians (radians = pi/180 * degrees)
 # 5. use height over sin(angle) to find length
 # 6. print length in complete sentence
 #

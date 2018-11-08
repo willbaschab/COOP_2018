@@ -12,9 +12,10 @@
 #    Chapter: 04
 #
 # Program Description
-# This program will draw a face
-#
-#
+#  This program will draw a yellow face with two black eyes,
+# an orange nose, and a blank expression. The eyes, face, and nose
+# are circles. The mouth is a straight line. Every part of the face
+# is proportional to the whole.
 #
 # Algorithm (pseudocode)
 # - from graphics import *
@@ -47,7 +48,10 @@ def main():
     win = GraphWin("Archery Target", width, height)
 
     intro = Text(center,
-                 "This program will draw a face.\n\n" +
+                 " This program will draw a yellow face with two black eyes,\n\n" +
+                 "an orange nose, and a blank expression. The eyes, face, and nose\n\n" +
+                 "are circles. The mouth is a straight line. Every part of the face\n\n" +
+                 "is proportional to the whole.\n\n" +
                  "Click to begin.")
     intro.setSize(20)
     intro.draw(win)
