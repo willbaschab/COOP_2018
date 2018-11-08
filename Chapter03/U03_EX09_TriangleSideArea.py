@@ -21,7 +21,7 @@
 # 2. print introduction
 # 3. get a, b, and c from user input
 # 4. assign s to (a + b + c)/2
-# 5. calculate area using formula
+# 5. calculate area using formula: (sqrt(s * (s - a) * (s - b) * (s - c))
 # 6. print area in complete sentence
 #
 import math
