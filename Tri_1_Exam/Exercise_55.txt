@@ -1,0 +1,20 @@
+Algorithm:
+
+- Define check_fermat with variables <a>, <b>, <c>, <n> as arguments
+     - if (a ** n + b ** n) == c ** n
+          - return True
+     - else, return False
+
+- Define main function with no arugments
+     - print introduction ("This program will take four numbers, a, b, c, and n and test Fermat's Last Theorem that if n is greater than 2, a^n + b^n will not equal c^n so long as a, b, and c are positive integers."
+
+     - get a as input with message "Enter the number a in the equation a^n + b^n = c^n: " and convert to integer, store this value in variable <a>
+     - get b as input with message "Enter the number b in the equation a^n + b^n = c^n: " and convert to integer, store this value in variable <b>
+     - get c as input with message "Enter the number c in the equation a^n + b^n = c^n: " and convert to integer, store this value in variable <c>
+     - get n as input with message "Enter the number n in the equation a^n + b^n = c^n: " and convert to integer, store this value in variable <n>
+
+     - if check_fermat(<a>, <b>, <c>, <n>) == True
+          - print "Holy smokes, Fermat was wrong!"
+     - else, print 'No, that doesn't work."
+
+- run main()
