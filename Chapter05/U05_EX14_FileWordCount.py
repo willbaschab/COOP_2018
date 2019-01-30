@@ -22,7 +22,7 @@
 - print introduction
 
 - get file name as input and store in <name>
-- set <file> to open(name + ".txt", "r")
+- set <file> to open(name, "r")
 
 - initialize accumulators line_count, word_count, character_count
 
@@ -45,8 +45,8 @@ def main():
           "\nand number of characters. This is done using string methods" +
           "\nsuch as .split(), len(), and others.\n")
 
-    name = input("Enter the name of the file to open: ")
-    file = open(name + ".txt", "r")
+    name = input('Enter name of file as well as .txt extension on end: ')
+    file = open(name, "r")
 
     line_count, word_count, character_count = 0, 0, 0
 

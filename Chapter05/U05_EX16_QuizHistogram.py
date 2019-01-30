@@ -24,7 +24,7 @@
 
 - ask for file name as input and save into <name>
 
-- set <file> to open(name + ".txt", "r")
+- set <file> to open(name, "r")
 
 - set <numlist> to a list with eleven 0s
 
@@ -44,7 +44,7 @@ def main():
           "a number in the range 0 - 10. The program will return the number\n" +
           "of occurrences of each score as a bar in a vertical bar graph.\n")
 
-    filename = input("Enter the name of the file to open with exam scores: ")
+    filename = input('Enter name of file as well as .txt extension on end: ')
     file = open(filename, "r")
 
     numlist = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]

@@ -24,7 +24,7 @@
 
 - ask for file name as input and save into <name>
 
-- set <file> to open(name + ".txt", "r")
+- set <file> to open(name, "r")
 
 - set <student_count> to int(file.readline(1)[:-1])
 - set variables <students> and <grades> to empty lists
@@ -46,7 +46,7 @@ def main():
           "\nline and the last name of the student followed by their score on the subsequent lines." +
           "\nIt will return a graphical bar chart of the student's names and their scores out of 100.\n")
 
-    filename = input("Enter the name of the file to open with exam scores: ")
+    filename = input('Enter name of file as well as .txt extension on end: ')
     file = open(filename, "r")
 
     studentcount = int(file.readline(1))
