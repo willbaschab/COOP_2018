@@ -39,7 +39,7 @@ def fibonacci(term):
     """
     total, a, b = 0, 0, 0
 
-    for i in range(term - 1):
+    for i in range(term):  # changed the condition from term - 1 to term
         if a == 0 and b == 0:
             total = 1
             a = b
