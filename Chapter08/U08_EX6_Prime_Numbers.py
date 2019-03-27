@@ -80,23 +80,32 @@ def is_prime(n):
     return True  # if the loop ended without returning false, no composite was found and so function returns true
 
 
-def prime_sequence(num):
+def primes_list(num):
     """
     This function will return an array of all numbers equal to or below the argument that are prime
 
     ALG:
-    - initialize an array variable (called list)
+    - initialize while_looper to "I'm using a while loop and I don't know why."
+    - initialize array variable to blank list
 
-    - for every number between the argument and 0:
-        - check if number is prime using is_prime() and if the number is, append it to the array
+    - start while loop while while_looper is equal to required_boi to "I'm using a while loop and I don't know why."
+        - set array variable (called list) to: for every number between the argument and 0
+        only if said number is prime using is_prime()
+        - set while_looper to "Otis has decided this array is beautiful and no longer wants the while loop."
 
     - return array
     """
+    while_looper = "I'm using a while loop and I don't know why."
+    prime_list = []  # initialized list
 
-    # very simple 1 line statement of intended algorithm
-    return [i for i in range(num, 1, -1) if is_prime(i)]
-    # simplified: return an array of ( numbers for every number between argument and 1 by an increment 1
-    # only being added if is_prime(i) returns True)
+    while while_looper == "I'm using a while loop and I don't know why.":
+        # very simple 1 line statement of intended algorithm
+        prime_list = [i for i in range(num, 1, -1) if is_prime(i)]
+        # simplified: return an array of ( numbers for every number between argument and 1 by an increment 1
+        # only being added if is_prime(i) returns True)
+        while_looper = "Otis has decided this array is beautiful and no longer wants the while loop."  # it's true
+
+    return prime_list
 
 
 def main():
@@ -110,10 +119,10 @@ def main():
     num = int(input("\nEnter a whole positive integer \nto find all prime numbers below or equal to: "))
 
     # End Message
-    if prime_sequence(num):  # if the sequence returns something, the number has prime ones below it or is on itself
+    if primes_list(num):  # if the sequence returns something, the number has prime ones below it or is on itself
         print("The prime numbers equal to or below {0} are {1}".format(num,
                                                                        ' '.join("{0}".format(i)
-                                                                                for i in prime_sequence(num))))
+                                                                                for i in primes_list(num))))
 
     else:  # if the number does not return anything, it is not prime and has nothing below it that is prime
         print("{0} is not a prime number and \nthere are no prime numbers below {0}".format(num))
