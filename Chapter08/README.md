@@ -4,6 +4,7 @@
 * U08_EX6_Prime_Numbers.py
 * U08_EX08_GCD.py
 * U08_EX14_GrayscaleIMG.py
+* U08_EX15_ImageNegative.py
+* U08_EX17_ImageManipulation.py
 ## In Progress:
-* exercise 15
-* exercise 17
+* all complete
