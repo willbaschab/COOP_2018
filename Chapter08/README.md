@@ -3,7 +3,7 @@
 * U08_EX4_Syracuse_Sequence.py
 * U08_EX6_Prime_Numbers.py
 * U08_EX08_GCD.py
+* U08_EX14_GrayscaleIMG.py
 ## In Progress:
-* exercise 14
 * exercise 15
 * exercise 17

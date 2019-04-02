@@ -12,9 +12,9 @@
 #    Chapter: 08
 #
 # Program Description
-#
-#
-#
+#  This program allows the user to upload an image and
+# edit it with a greyscale function. The image can be saved
+# or remove after it is edited.
 #
 # Algorithm (pseudocode)
 """
