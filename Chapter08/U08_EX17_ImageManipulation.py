@@ -3,7 +3,7 @@
 #  Author: Will Baschab
 #  Course: Coding for OOP
 # Section: A2
-#    Date: 1 Apr 2019
+#    Date: 2 Apr 2017
 #     IDE: PyCharm Community Edition
 #
 # Assignment Info
@@ -109,7 +109,7 @@ from tkinter.filedialog import asksaveasfilename, askopenfilename
 buttonLoad = Rectangle(Point(0,0), Point(1,1)); LOADIMAGE = 1; buttonLoadActive = 0
 buttonSave = Rectangle(Point(0,0), Point(1,1)); SAVEIMAGE = 2; buttonSaveActive = 0
 buttonQuit = Rectangle(Point(0,0), Point(1,1)); QUIT = 3; buttonQuitActive = 0
-buttonGray = Rectangle(Point(0,0), Point(1,1)); GRAYSCALE = 4; buttonGrayActive = 0; isNewEffect = False
+buttonGray = Rectangle(Point(0,0), Point(1,1)); GRAYSCALE = 4; buttonGrayActive = 0; isGrayscale = False
 buttonNeg = Rectangle(Point(0,0), Point(1,1)); NEGATIVE = 5; buttonNegActive = 0; isNegative = False
 buttonOther1 = Rectangle(Point(0,0), Point(1,1)); OTHER1 = 6; buttonOther1Active = 0; isOther1 = False
 buttonOther2 = Rectangle(Point(0,0), Point(1,1)); OTHER2 = 7; buttonOther2Active = 0; isOther2 = False
@@ -149,7 +149,7 @@ def main():
 #   drawMenu:
 def drawMenu():
     # at top of program, define global variables for button locations (they get set here)
-    global buttonLoad, buttonSave, buttonQuit, buttonGray, buttonNeg
+    global buttonLoad, buttonSave, buttonQuit, buttonGray, buttonNeg, buttonOther1, buttonOther2, buttonOther3
 
     # set standard height, width, and separation space for buttons
     # these are global variables
@@ -201,7 +201,7 @@ def drawMenu():
     buttonGray.setFill(color=buttonIdleFill)
     buttonGray.draw(win)
     Text(Point(topLeft.getX() + (botRight.getX() - topLeft.getX()) / 2,
-               topLeft.getY() + (botRight.getY() - topLeft.getY()) / 2), 'New Effect').draw(win)
+               topLeft.getY() + (botRight.getY() - topLeft.getY()) / 2), 'Grayscale').draw(win)
 
     # Negative button
     topLeft = Point(topLeft.getX(), topLeft.getY() + buttonHeight + buttonSep)
@@ -219,7 +219,7 @@ def drawMenu():
     buttonOther1.setFill(color=buttonIdleFill)
     buttonOther1.draw(win)
     Text(Point(topLeft.getX() + (botRight.getX() - topLeft.getX()) / 2,
-               topLeft.getY() + (botRight.getY() - topLeft.getY()) / 2), 'Other Effect 1').draw(win)
+               topLeft.getY() + (botRight.getY() - topLeft.getY()) / 2), 'Self Multiply Effect').draw(win)
 
     # Other Effect 2 button
     topLeft = Point(topLeft.getX(), topLeft.getY() + buttonHeight + buttonSep)
@@ -228,7 +228,7 @@ def drawMenu():
     buttonOther2.setFill(color=buttonIdleFill)
     buttonOther2.draw(win)
     Text(Point(topLeft.getX() + (botRight.getX() - topLeft.getX()) / 2,
-               topLeft.getY() + (botRight.getY() - topLeft.getY()) / 2), 'Other Effect 2').draw(win)
+               topLeft.getY() + (botRight.getY() - topLeft.getY()) / 2), 'JiJ by JiJ Effect').draw(win)
 
     # Other Effect 3 button
     topLeft = Point(topLeft.getX(), topLeft.getY() + buttonHeight + buttonSep)
@@ -237,7 +237,7 @@ def drawMenu():
     buttonOther3.setFill(color=buttonIdleFill)
     buttonOther3.draw(win)
     Text(Point(topLeft.getX() + (botRight.getX() - topLeft.getX()) / 2,
-               topLeft.getY() + (botRight.getY() - topLeft.getY()) / 2), 'Other Effect 3').draw(win)
+               topLeft.getY() + (botRight.getY() - topLeft.getY()) / 2), 'Plus Next Effect').draw(win)
 
 #   handleKeys:
 def handleKeys(key):
@@ -286,10 +286,19 @@ def handleClicks(pt):
         return 0
     if clickResult == GRAYSCALE:
         buttonGrayActive = buttonFillToggle(buttonGray, buttonGrayActive)
-        NewEffect()
+        grayscale()
     if clickResult == NEGATIVE:
         buttonNegActive = buttonFillToggle(buttonNeg, buttonNegActive)
         negative()
+    if clickResult == OTHER1:
+        buttonOther1Active = buttonFillToggle(buttonOther1, buttonOther1Active)
+        other1()
+    if clickResult == OTHER2:
+        buttonOther2Active = buttonFillToggle(buttonOther2, buttonOther2Active)
+        other2()
+    if clickResult == OTHER3:
+        buttonOther3Active = buttonFillToggle(buttonOther3, buttonOther3Active)
+        other3()
     return 1
 
 #   buttonClicked:
@@ -340,6 +349,7 @@ def buttonClicked(pt):
     elif buttonOther2Center.getX() - buttonWidth / 2 < pt.getX() < buttonOther2Center.getX() + buttonWidth / 2 and \
         buttonOther2Center.getY() - buttonHeight / 2 < pt.getY() < buttonOther2Center.getY() + buttonHeight / 2:
         retVal = OTHER2
+
     elif buttonOther3Center.getX() - buttonWidth / 2 < pt.getX() < buttonOther3Center.getX() + buttonWidth / 2 and \
         buttonOther3Center.getY() - buttonHeight / 2 < pt.getY() < buttonOther3Center.getY() + buttonHeight / 2:
         retVal = OTHER3
@@ -401,34 +411,37 @@ def saveImage():
     if imgNew:
         img.save(imgNew)
 
-#   New Effecg:
-def NewEffect():
+#   grayscale:
+def grayscale():
     """
-    Converts image to new effect (or back to previous state if already new effect)
+    Converts image to grayscale (or back to previous state if already grayscale)
     :return: None
     """
-    global img, imgOrig, isNewEffect
-    # if already n
-    if isNewEffect:
+    global img, imgOrig, isGrayscale
+    # if already grayscale
+    if isGrayscale:
         # revert to original pixels
         img = imgOrig.clone()
-        isNewEffect = False
+        isGrayscale = False
 
     # otherwise
     else:
         # save state
         imgOrig = img.clone()
 
-        # convert pixels to new effect
-        #     using image width and height, get pixel rgb values and set to new effect
+        # convert pixels to grayscale
+        #     using image width and height, get pixel rgb values and set to grayscale
         for i in range(imgWidth):
             for j in range(imgHeight):
                 rgb = img.getPixel(i, j)
-                new_effect_1 = color_rgb(rgb[2]//2, rgb[1]//2, rgb[0]//2)
-                img.setPixel(i, j, new_effect_1)
-        isNewEffect = True
+                grayAvg = int(sum(rgb) / 3)
+                grayLum = int(round(0.21 * rgb[0] + 0.72 * rgb[1] + 0.07 * rgb[2]))
+                grayLit = int((max(rgb) + min(rgb)) / 2)
+                gray = grayLum
+                img.setPixel(i, j, color_rgb(gray, gray, gray))
+        isGrayscale = True
 
-    # display new effect image
+    # display grayscale image
     img.undraw()
     img.draw(win)
 
@@ -452,6 +465,129 @@ def negative():
     img.undraw()
     img.draw(win)
 
+#   other effects:
+#       if effect already applied
+#           revert to original pixels
+#       otherwise
+#           save state
+#           convert pixels to effect
+#               using image width and height, get pixel rgb values and set to effect
+#       display image
+
+#  other1
+def other1():
+    """
+    Converts image to other1 effect (or back to previous state if already other1)
+    :return: None
+    """
+    global img, imgOrig, isOther1
+    # if Other1 effect already applied
+    if isOther1:
+        # revert to original pixels
+        img = imgOrig.clone()
+        isOther1 = False
+
+    # otherwise
+    else:
+        # save state
+        imgOrig = img.clone()
+        location = 0  # a variable to keep track of what pixel the image is on
+        # convert pixels to Other1 effect
+        #     using image width and height, get pixel rgb values and set to Other1 effect
+        for i in range(imgWidth):
+            for j in range(imgHeight):
+                location += 1
+                if location % 2 == 0:
+                    rgb = img.getPixel(i, j)  # gets rgb list
+                    r = rgb[0]  # r color
+                    g = rgb[1]  # g color
+                    b = rgb[2]  # b color
+                    img.setPixel(i, j, color_rgb(int(r * g) % 255,
+                                                 int(g * b) % 255,
+                                                 int(b * r) % 255))  # new combination
+        isOther1 = True
+
+    # display Other1 effected image
+    img.undraw()
+    img.draw(win)
+
+
+def other2():
+    """
+    Converts image to other 2 effect (or back to previous state if already other2)
+    :return: None
+    """
+    global img, imgOrig, isOther2
+    # if Other2 effect already applied
+    if isOther2:
+        # revert to original pixels
+        img = imgOrig.clone()
+        isOther2 = False
+
+    # otherwise
+    else:
+        # save state
+        imgOrig = img.clone()
+        chunksize = img.getWidth()//10
+        # convert pixels to Other3 effect
+        #     using image width and height, get pixel rgb values and set to Other2 effect
+        for i in range(imgWidth):
+            for j in range(imgHeight):
+                rgb = img.getPixel(i, j)  # gets rgb list
+                r = rgb[0]  # r color
+                g = rgb[1]  # g color
+                b = rgb[2]  # b color
+                img.setPixel(i, j, color_rgb(int(r * j/(i + 1)) % 255,
+                                             int(g * i/(j + 1)) % 255,
+                                             int(b * j/(i + 1)) % 255))  # new combination
+            if i % chunksize == 0:
+                img.undraw()
+                img.draw(win)
+
+        isOther2 = True
+
+    # display Other2 effected image
+    img.undraw()
+    img.draw(win)
+
+
+def other3():
+    """
+    Converts image to other 3 effect (or back to previous state if already other3)
+    :return: None
+    """
+    global img, imgOrig, isOther3
+    # if Other3 effect already applied
+    if isOther3:
+        # revert to original pixels
+        img = imgOrig.clone()
+        isOther3 = False
+
+    # otherwise
+    else:
+        # save state
+        imgOrig = img.clone()
+        chunksize = img.getWidth()//10
+        # convert pixels to Other3 effect
+        #     using image width and height, get pixel rgb values and set to Other3 effect
+        for i in range(imgWidth):
+            for j in range(imgHeight):
+                rgb = img.getPixel(i, j)  # gets rgb list
+                r = rgb[0]  # r color
+                g = rgb[1]  # g color
+                b = rgb[2]  # b color
+                img.setPixel(i, j, color_rgb(int(r + g) % 255,
+                                             int(g + b) % 255,
+                                             int(b + r) % 255))  # new combination
+            if i % chunksize == 0:
+                img.undraw()
+                img.draw(win)
+
+        isOther3 = True
+
+    # display Other3 effected image
+    img.undraw()
+    img.draw(win)
 
 
 if __name__ == '__main__':
